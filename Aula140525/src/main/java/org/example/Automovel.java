@@ -38,7 +38,7 @@ public abstract class Automovel {
     }
     public void aumentarVelocidade(int velocidade) throws Exception {
         if (this.velocidade < 130) {
-            this.velocidade += 10;
+            this.velocidade += 15;
         } else {
             throw new Exception("Não posso mais acelerar");
         }

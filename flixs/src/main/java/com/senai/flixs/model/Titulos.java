@@ -1,15 +1,17 @@
 package com.senai.flixs.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
+import jakarta.persistence.*;
 
 @Entity
 public class Titulos {
+
+    @Id
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    private Long id;
     private String nome;
     private String genero;
     @Enumerated(EnumType.STRING)
-    private TipoTitulo tipo;
+    private TipoTitulos tipo;
     private int anoLancamento;
     private boolean jaAssistiu;
     private double avaliacao;
@@ -30,11 +32,11 @@ public class Titulos {
         this.genero = genero;
     }
 
-    public TipoTitulo getTipo() {
+    public TipoTitulos getTipo() {
         return tipo;
     }
 
-    public void setTipo(TipoTitulo tipo) {
+    public void setTipo(TipoTitulos tipo) {
         this.tipo = tipo;
     }
 

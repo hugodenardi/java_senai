@@ -10,6 +10,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/titulos")
 public class TitulosController {
+
     @Autowired
     private final TitulosService titulosService;
 
@@ -21,7 +22,6 @@ public class TitulosController {
     public List<Titulos> buscarTitulos(){
         return titulosService.buscarTitulos();
     }
-
 
     @PostMapping
     public Titulos gravarTitulo(@RequestBody Titulos titulos) {

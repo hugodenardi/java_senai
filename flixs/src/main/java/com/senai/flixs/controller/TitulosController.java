@@ -28,13 +28,22 @@ public class TitulosController {
         return titulosService.salvarTitulo(titulos);
     }
 
-    @PutMapping
-    public String atualizarFilme() {
-        return "Filme atualizado com sucesso";
+    @PutMapping ("/{id}")
+    public Titulos atualizarTitulo(@RequestBody Titulos novoTitulo, @PathVariable Long id) {
+        return titulosService.atualizarTitulos(novoTitulo, id);
+    }
+    public record AtualizarAssistidoDto(boolean jaAssistiu){
+
+    }
+    @PutMapping ("/{id}/assistiu")
+    public Titulos atualizarJaAssistiu(@RequestBody AtualizarAssistidoDto dto, @PathVariable Long id) {
+
+        return titulosService.atualizarJaAssistiu(dto.jaAssistiu(), id);
     }
 
-    @DeleteMapping
-    public String deletarFilme() {
-        return "Filme deletado com sucesso";
+    @DeleteMapping ("/{id}")
+    public String deletarFilme(@PathVariable Long id) {
+        titulosService.deletarTitulos(id);
+        return "Título deletado com sucesso";
     }
 }

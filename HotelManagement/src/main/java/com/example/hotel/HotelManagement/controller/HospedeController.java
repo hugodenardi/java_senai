@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/hospedes")
@@ -25,6 +26,10 @@ public class HospedeController {
     @GetMapping
     public List<Hospede> buscarHospedes() {
         return hospedeService.buscarHospedes();
+    }
+    @GetMapping("/{id}")
+    public Hospede buscarHospedeDetalhado(@PathVariable Long id) {
+        return hospedeService.buscarHospedeDetalhado(id);
     }
     @PostMapping
     public Hospede criarHospede (@RequestBody @Valid HospedeCriarDTO hospede) {

@@ -11,8 +11,11 @@ import com.example.hotel.HotelManagement.repository.HospedesRepository;
 import com.example.hotel.HotelManagement.repository.QuartosRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class HospedeService {
@@ -23,6 +26,11 @@ public class HospedeService {
     }
     public List<Hospede> buscarHospedes() {
         return hospedesRepository.findAll();
+    }
+    public Hospede buscarHospedeDetalhado(Long id){
+        return hospedesRepository.findById(id).orElseThrow(() ->
+                new RuntimeException("Não encontrado")
+        );
     }
     public Hospede criarHospede(HospedeCriarDTO hospedeCriarDTO) {
         Hospede hospede = new Hospede();
